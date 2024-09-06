@@ -1,8 +1,8 @@
 import { test as setup } from '@playwright/test';
-import user from '../.auth/user.json'
+import user from './mocks/user.json'
 import fs from 'fs'
 
-const authFile = '.auth/user.json'
+const authFile = './mocks/user.json'
 
 setup('authentication', async({request}) => {
 
