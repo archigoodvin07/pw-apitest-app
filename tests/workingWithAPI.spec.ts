@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, request } from '@playwright/test';
 import  tags from '../test-data/tags.json'
-import { request } from 'http';
+
+
 
 test.beforeEach(async ({page}) => {
   await page.route('*/**/api/tags', async route => {
@@ -68,7 +69,6 @@ test('create article', async ({ page, request }) => {
 
   await expect(page.locator('app-article-list h1').first()).toContainText('Playwright is awesome')
 
- const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugId}`)
-
+  const deleteArticleResponse = await request.delete(`https://conduit-api.bondaracademy.com/api/articles/${slugId}`)
   expect (deleteArticleResponse.status()).toEqual(204)
   })
